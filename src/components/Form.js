@@ -78,8 +78,8 @@ class Form extends Component {
 
 
       isDisabled = () => {
-        const { firstName, lastName, address, phone, email, checkbox } = this.state;
-        return firstName.length < 1 || lastName.length < 1 || address.length < 1 || phone.length < 1 || email.length < 1 || checkbox === false;
+        const { errors, checkbox } = this.state;
+        return errors.firstName !== '' || errors.lastName !== '' || errors.address !== '' || errors.phone !== '' || errors.email !== '' || checkbox === false;
       }
 
 
@@ -87,7 +87,7 @@ class Form extends Component {
         return (
           <div className='wrapper'>
             <div className='form-wrapper'>
-              <h2>Please fill out this form</h2>
+              <h2>Please fill out this form:</h2>
               <form onSubmit={this.handleSubmit}>
                 <div className='firstName'>
                   <label htmlFor='firstName'>First name</label>
