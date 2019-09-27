@@ -101,7 +101,7 @@ class Form extends Component {
           <div className='wrapper'>
             <div className='form-wrapper'>
               <h2>Please fill out this form:</h2>
-              <form onSubmit={this.handleSubmit.bind(this)}>
+              <form autoComplete='off' onSubmit={this.handleSubmit.bind(this)}>
                 <div className='firstName'>
                   <label htmlFor='firstName'>First name</label>
                   <input type='text' name='firstName' onChange={this.handleChange} />
