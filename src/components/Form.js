@@ -74,9 +74,22 @@ class Form extends Component {
         });
 
         actionCreators.updateData(data);
+        event.target.reset();
+        this.errorsReset();
       }
 
 
+      errorsReset = () => { 
+        let errors = this.state.errors;
+        errors.firstName = 'Required';
+        errors.lastName = 'Required';
+        errors.address = 'Required';
+        errors.phone = 'Required';
+        errors.email = 'Required';
+        this.setState({errors})
+      }
+
+      
       isDisabled = () => {
         const { errors, checkbox } = this.state;
         return errors.firstName !== '' || errors.lastName !== '' || errors.address !== '' || errors.phone !== '' || errors.email !== '' || checkbox === false;
@@ -88,7 +101,7 @@ class Form extends Component {
           <div className='wrapper'>
             <div className='form-wrapper'>
               <h2>Please fill out this form:</h2>
-              <form onSubmit={this.handleSubmit}>
+              <form onSubmit={this.handleSubmit.bind(this)}>
                 <div className='firstName'>
                   <label htmlFor='firstName'>First name</label>
                   <input type='text' name='firstName' onChange={this.handleChange} />
